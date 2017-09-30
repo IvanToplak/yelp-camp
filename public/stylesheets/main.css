@@ -1,0 +1,36 @@
+.thumbnail img {
+    width: 100%;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.delete-form, .rating-form {
+    display: inline;
+}
+
+.login-form {
+    width: 30%;
+    margin: 25px auto;
+}
+
+.text-centered {
+    text-align: center
+}
+
+.star-rating .glyphicon .glyphicon-star {
+    color: gold;
+}
+
+.campground-info-right{
+    margin-left: 20px;
+}
+
+/* Google Maps */
+
+#map {
+    height: 400px;
+    width: 100%;
+    margin-bottom: 9px;
+}

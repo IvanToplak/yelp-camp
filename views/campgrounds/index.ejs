@@ -1,0 +1,82 @@
+<% include ../partials/header %>
+
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Welcome To YelpCamp</h1>
+            <p>View our hand-picked campgrounds from all over the world</p>
+            <p>
+                <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add New Campground</a>
+            </p>
+            <p>
+                <form action="/campgrounds" method="GET" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" name="search" placeholder="Campground search..." class="form-control">
+                        <button type="submit" class="btn btn-default">Search</button>
+                    </div>
+                </form>
+            </p>
+        </div>
+    </header>
+
+    <div class="row text-center" style="display:flex; flex-wrap:wrap">
+        <% campgrounds.forEach(function(campground){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                    <img src="<%= campground.image %>">
+                    <div class="caption">
+                        <h4>
+                            <%= campground.name %>
+                        </h4>
+                    </div>
+                    <p>
+                        <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+                    </p>
+                </div>
+            </div>
+            <% }); %>
+    </div>
+    <div class="row">
+        <nav>
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <ul class="pagination pagination-lg">
+                    <% if(pages.current > 1 && pages.hasPrev === true) { %>
+                        <li>
+                            <a href="/campgrounds?page=<%= pages.prev %>" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>
+                        </li>
+                        <% } else { %>
+                            <li>
+                                <a class="btn btn-xs disabled" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>
+                            </li>
+                            <% } %>
+                                <li>
+                                    <% for(var i = 1; i < pages.total +1; i++) { %>
+                                        <li>
+                                            <a href="/campgrounds?page=<%= i %>">
+                                                <%= i %>
+                                            </a>
+                                        </li>
+                                        <% } %>
+                                </li>
+                                <% if(pages.current < pages.total && pages.hasNext === true) { %>
+                                    <li>
+                                        <a href="/campgrounds?page=<%= pages.next %>" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                    <% } else { %>
+                                        <li>
+                                            <a class="btn btn-xs disabled" href="#" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                        <% } %>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <% include ../partials/footer %>
