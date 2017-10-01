@@ -20,7 +20,7 @@ mongoose.Promise = global.Promise;
 // environment variables
 const databaseUrl = process.env.DATABASEURL || "mongodb://localhost/yelp_camp",
     port = process.env.PORT || "3000",
-    hostname = process.env.IP || "127.0.0.1";
+    hostname = process.env.IP || "0.0.0.0";
 
 // connect to database
 mongoose.connect(databaseUrl, {
