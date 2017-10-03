@@ -8,7 +8,8 @@ const express = require("express"),
     flash = require("connect-flash"),
     User = require("./models/user"),
     //seedDB = require("./seeds"),
-    middleware = require("./middleware");
+    middleware = require("./middleware"),
+    expressSanitizer = require("express-sanitizer");
 
 // requring routes
 const campgroundRoutes = require("./routes/campgrounds"),
@@ -35,6 +36,7 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
+app.use(expressSanitizer());
 // seedDB(); //seed the database
 app.locals.moment = require("moment");
 

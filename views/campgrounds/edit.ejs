@@ -12,10 +12,7 @@
                 </div>
                 <div class="form-group">
                     <label for="image">Image Url</label>
-                    <!-- <input class="form-control" type="text" name="campground[image]" id="image" value="<%= campground.image %>" pattern="^https:\/\/images\.unsplash\.com\/.*"
-                        title="Only images from images.unsplash.com allowed. See link below for instructions." required>
-                    <small>Click <a href="https://youtu.be/Bn3weNRQRDE">here</a> for tutorial on how to copy unsplash urls.</small> -->
-                    <input class="form-control" type="text" name="campground[image]" id="image" value="<%= campground.image %>" required>                    
+                    <input class="form-control" type="text" name="campground[image]" id="image" value="<%= campground.image %>" required>
                 </div>
                 <div class="form-group">
                     <label for="price">Price</label>
@@ -28,13 +25,13 @@
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <input class="form-control" type="text" name="campground[description]" id="description" value="<%= campground.description %>">
+                    <textarea class="form-control" name="campground[description]" id="description"><%= campground.description %></textarea>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Subimit!</button>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Post!</button>
                 </div>
             </form>
-            <a href="/campgrounds">Go Back</a>
+            <a href="/campgrounds/<%= campground._id %>">Go Back</a>
         </div>
     </div>
 

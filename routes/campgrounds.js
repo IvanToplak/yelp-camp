@@ -96,7 +96,7 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
     // get data form form and add to campgrounds array
     let name = req.body.name;
     let image = req.body.image;
-    let description = req.body.description;
+    let description = req.sanitize(req.body.description);
     let price = req.body.price;
     let author = {
         id: req.user._id,
@@ -220,7 +220,7 @@ router.put("/:id", middleware.isLoggedIn, middleware.checkCampgroundOwnership, (
         let newData = {
             name: req.body.campground.name,
             image: req.body.campground.image,
-            description: req.body.campground.description,
+            description: req.sanitize(req.body.campground.description),
             price: req.body.campground.price,
             location: location,
             lat: lat,

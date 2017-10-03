@@ -28,6 +28,7 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
             res.redirect("/campgrounds");
         }
         // create new comment
+        req.body.comment.text = req.sanitize(req.body.comment.text);
         Comment.create(req.body.comment, (err, comment) => {
             if (err) {
                 req.flash("error", "Error while saving information to database");
@@ -65,6 +66,7 @@ router.get("/:comment_id/edit", middleware.isLoggedIn, middleware.checkCommentOw
 
 // UPDATE
 router.put("/:comment_id", middleware.isLoggedIn, middleware.checkCommentOwnership, (req, res) => {
+    req.body.comment.text = req.sanitize(req.body.comment.text);
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, (err) => {
         if (err) {
             req.flash("error", "Error while updating information in database");
